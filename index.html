@@ -25,38 +25,59 @@
         </div>
     </div>
     <script>
-        //ゼロを追加する
-        var addZero = function (value) {
-            if (value < 10) {
-                value = '0' + value;
-            }
-            return value;
-        }
 
-        //functionから書く書き方もある
+        var start;
+
+        document.getElementById('start_stop').addEventListener('click', function(){
+           start = new Date();
+
+            setInterval(goTimer, 10); //setInterbalはwindowのオブジェクトのメソッド。一般的に省略される
+        });
+
+        var goTimer = function() {
+            var now = new Date();
+
+            var milli = now.getTime() - start.getTime();
+            var seconds = Math.floor(milli / 1000);
+
+            document.getElementById('timer').innerHTML= seconds;
+        };
+
+
+
+// コース85まで
+        // //ゼロを追加する
+        // var addZero = function (value) {
+        //     if (value < 10) {
+        //         value = '0' + value;
+        //     }
+        //     return value;
+        // }
+
+        // //functionから書く書き方もある
         
-        document.getElementById('start_stop').addEventListener('click', function () {
+        // document.getElementById('start_stop').addEventListener('click', function () {
 
-                var now = new Date();
-                var seconds = now.getSeconds(); //秒を取得する
-                var minutes = now.getMinutes();
-                var hours = now.getHours();
+        //         var now = new Date();
+        //         var seconds = now.getSeconds(); //秒を取得する
+        //         var minutes = now.getMinutes();
+        //         var hours = now.getHours();
 
-                seconds = addZero(seconds);
-                minutes = addZero(minutes);
-                hours = addZero(hours);
+        //         seconds = addZero(seconds);
+        //         minutes = addZero(minutes);
+        //         hours = addZero(hours);
 
                 
 
 
 
-                document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+        //         document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
 
-            });
-        //document.getElementById('timer').innerHTML = '00:00:01'
-        // getelementbyidでelement属性になる。ただinnerHTMLはmethodではないそうだ
-        // innerHTMLはメソッドではなくプロパティ
-        // 動きはメソッド、見た目はプロパティ
+        //     });
+        // //document.getElementById('timer').innerHTML = '00:00:01'
+        // // getelementbyidでelement属性になる。ただinnerHTMLはmethodではないそうだ
+        // // innerHTMLはメソッドではなくプロパティ
+        // // 動きはメソッド、見た目はプロパティ
 
     </script>
 </body>
